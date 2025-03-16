@@ -26,13 +26,22 @@ const countdown = document.getElementById('countdown');
 const weatherInfo = document.getElementById('weather-info');
 
 
-
 tripForm.addEventListener('submit', handleFormSubmit);
 
 document.querySelector('.save-trip').addEventListener('click', saveTrip);
 
 document.querySelector('.remove-trip').addEventListener('click', removeTrip);
 
+
+const today = new Date();
+
+const maxDate = new Date();
+
+maxDate.setDate(today.getDate() + 14);
+
+dateInput.min = today.toISOString().split("T")[0]; 
+
+dateInput.max = maxDate.toISOString().split("T")[0]; 
 
 
 async function handleFormSubmit(event) {
@@ -42,20 +51,32 @@ async function handleFormSubmit(event) {
 
     const location = locationInput.value;
 
-    const date = dateInput.value;
+    const date = new Date(dateInput.value);
+
+    const today = new Date();
+
+    const maxAllowedDate = new Date();
+
+    maxAllowedDate.setDate(today.getDate() + 14);
+
+    if (date > maxAllowedDate) {
+        alert('Please select a date within the next 14 days.');
+        return;
+    }
+
 
     try {
 
         const geoData = await getGeonamesData(location);
 
-        const weather = await getWeatherbitData(geoData.lat, geoData.lng, date);
+        const weather = await getWeatherbitData(geoData.lat, geoData.lng, dateInput.value);
 
         const imageUrl = await getPixabayImage(location, geoData.countryName);
         
         updateUI({
             location: `${location}, ${geoData.countryName}`,
-            date: formatDate(date),
-            countdown: calculateCountdown(date),
+            date: formatDate(dateInput.value),
+            countdown: calculateCountdown(dateInput.value),
             weather: `${weather.temp} celsius , ${weather.description}`,
             imageUrl
         });
