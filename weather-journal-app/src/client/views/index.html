@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1>Travel Planner</h1>
-        
+         <!-- Trip input form -->
         <form id="trip-form" class="form-section">
             <label for="location">Enter your destination: </label>
             <input type="text" id="location" placeholder="example : Jerusalem, Palestine" required>
@@ -18,8 +18,10 @@
             
             <button type="submit" id="button-submit">Plan My Trip</button>
         </form>
-        
+
+        <!-- Trip details display -->
         <div class="trip-details" id="trip-details">
+            <!-- Dynamic content -->
             <img id="location-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToHEhkTw7tnGlR1taYOH87wXsUEWtd-FNJFw&s" alt="Location Image">
             <p class="bold">The trip to : <span id="trip-location">  </span></p>
             <p class="bold">Departing on : <span id="trip-date">  </span></p>

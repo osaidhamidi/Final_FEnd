@@ -1,28 +1,16 @@
 # Travel Planner Application
 
-This app allows users to plan trips by entering a destination and date. It then displays information about the location: weather forecast, a countdown to the trip, and an image of the destination.
+A web application that helps users plan trips by providing weather forecasts, destination images, and trip countdowns. Integrates with Geonames, Weatherbit, and Pixabay APIs to deliver real travel insights.
 
 ## Features
 
-- Enter a destination and a departure date
-- View weather forecast for your trip date.
-- See a countdown of days until your trip
-- View an image of your destination
-- Save trip (mock)
-- Remove trip 
+- Destination Search: Find locations using Geonames database
+- Weather Forecast: Get 14-day weather predictions from Weatherbit API
+- Destination Images: Display location images from Pixabay
+- Trip Countdown: Automatic days-until-trip calculation
+- Offline Capabilities: Service Worker implementation using Workbox
+- Responsive Design: Built with Sass for styling
 
-
-## Installation
-
-1. Clone this repository
-2. Run `npm install` 
-3. Obtain your own API keys from Geonames, Weatherbit, and Pixabay
-4. Replace API credentials in `src/client/js/app.js`:
-   ```javascript
-   const geonamesUsername = 'yourUsername';
-   const weatherbitApiKey = 'yourApiKey';
-   const pixabayApiKey = 'yourApiKey';
-   ```
 
 ## Running the Application
 
@@ -32,11 +20,56 @@ This app allows users to plan trips by entering a destination and date. It then 
 - Run tests: `npm test`
 
 ## Dependencies
+- express
+- cors
+- dotenv
+- body-parser
+- workbox-webpack-plugin
 
-- Express
-- Cors
-- bodyParser
-- Webpack
-- Babel
-- Sass
-- Jest
+## Development Dependencies
+- webpack
+- babel
+- sass
+- jest
+- clean-webpack-plugin
+- html-webpack-plugin
+
+## Project Structure
+weather-journal-app/
+│── README.md
+│── .gitignore
+│── .babelrc
+│── webpack.dev.js
+│── webpack.prod.js
+│── package.json
+│── package-lock.json
+│── dist/
+│── __tests__/
+│   │── app.test.js
+│   │── server.test.js
+│── src/
+│   │── index.js
+│   │── server/
+│   │   │── server.js
+│   │── client/
+│   │   │── styles/
+│   │   │   │── main.scss
+│   │   │── views/
+│   │   │   │── index.html
+│   │   │── js/
+│   │   │   │── app.js
+
+
+## ## 📋 Installation & Setup
+
+- Clone repository:
+   ```bash
+   git clone https://github.com/osaidhamidi/Final_FEnd.git
+   ```
+- Install dependencies:
+```bash
+npm install
+```
+
+## License
+none.
